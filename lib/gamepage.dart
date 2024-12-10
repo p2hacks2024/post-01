@@ -58,7 +58,7 @@ class GameHomePage extends StatefulWidget {
 }
 
 class _GameHomePageState extends State<GameHomePage> {
-  String displayText = "スタート";
+  // String displayText = "スタート";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
