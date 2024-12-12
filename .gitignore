@@ -35,13 +35,20 @@ Temporary Items
 *.icloud
 
 ### Unity ###
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Uu]ser[Ss]ettings/
+
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/Library/PackageCache/com.unity.burst/.Runtime/burst-llvm-16-arm64.dll
+/Library/PackageCache/com.unity.burst/.Runtime/burst-llvm-16.dll
+/Library/PackageCache/com.unity.burst/.Runtime/hostmac/dsymutil/
+/Library/PackageCache/com.unity.burst/.Runtime/libburst-llvm-10.dylib
+/Library/PackageCache/com.unity.burst/.Runtime/libburst-llvm-16.so
+/Library/PackageCache/com.unity.burst/.Runtime/libburst-llvm-16.dylib
 Library/
 ExportedObj/
 .consulo/
