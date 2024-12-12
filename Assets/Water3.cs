@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.U2D;
 
-public class Water : MonoBehaviour
+public class Water3 : MonoBehaviour
 {
     private SpriteShapeController sc;
     private Spline spline;
@@ -10,7 +10,7 @@ public class Water : MonoBehaviour
     private int n;
     [SerializeField] private float interval = 0.1f;
     [SerializeField] private float basewaveAmplitude = 0.5f; // 波の高さ
-    [SerializeField] private float basewaveFrequency = 0.5f;  // 波の周期
+    [SerializeField] private float basewaveFrequency = 2f;  // 波の周期
     [SerializeField] private float basewaveSpeed = 0.5f;     // 波の動く速さ
     [SerializeField] private Transform waveObject;  
     [SerializeField] private float amplitudeMultiplier = 2.0f; // 高さ変化の倍率
@@ -51,10 +51,11 @@ public class Water : MonoBehaviour
     private void Update()
     {
         Vector3 tilt = Input.acceleration;
-        waveAmplitude=basewaveAmplitude;
-
+        waveAmplitude = basewaveAmplitude + tilt.x * amplitudeMultiplier;
+        waveFrequency = basewaveFrequency + tilt.y * frequencyMultiplier;
+        // 時間を基準に波を動かす
         BaseWave();
-        if(tilt.x>=10){
+        if(tilt.x>=30){
             Wave1();
         }
         
@@ -67,9 +68,6 @@ public class Water : MonoBehaviour
     public void BaseWave(){
         float time = Time.time * basewaveSpeed;
         waveAmplitude=basewaveAmplitude;
-        waveFrequency = basewaveFrequency;
-        waveSpeed = basewaveSpeed;
-
         for (int i = 2; i < n; i++)
         {
             Vector3 pos = spline.GetPosition(i);
@@ -88,9 +86,6 @@ public class Water : MonoBehaviour
 
     public void Wave1(){
         float time = Time.time * basewaveSpeed;
-        waveAmplitude=basewaveAmplitude;
-        waveFrequency = basewaveFrequency*5.0f;
-        waveSpeed = basewaveSpeed*10.0f;
         for (int i = 2; i < n; i++)
         {
             Vector3 pos = spline.GetPosition(i);
@@ -102,7 +97,7 @@ public class Water : MonoBehaviour
         if (waveObject != null)
     {
         Vector3 waveObjPos = waveObject.position;
-        waveObjPos.y = GetWaveHeight(waveObject.position.x, time-1.0f)-0.25f; // 波の高さを取得
+        waveObjPos.y = GetWaveHeight(waveObject.position.x, time+1)-0.25f; // 波の高さを取得
         waveObject.position = waveObjPos;
     }
     }
