@@ -52,9 +52,8 @@ public class Water : MonoBehaviour
     {
         Vector3 tilt = Input.acceleration;
         waveAmplitude=basewaveAmplitude;
-
         BaseWave();
-        if(tilt.x>=10){
+        if(tilt.x>=-0.2f&&tilt.x<=0.2f){
             Wave1();
         }
         
@@ -88,9 +87,9 @@ public class Water : MonoBehaviour
 
     public void Wave1(){
         float time = Time.time * basewaveSpeed;
-        waveAmplitude=basewaveAmplitude;
-        waveFrequency = basewaveFrequency*5.0f;
-        waveSpeed = basewaveSpeed*10.0f;
+        waveAmplitude=basewaveAmplitude*5.0f;
+        waveFrequency = basewaveFrequency;
+        waveSpeed = basewaveSpeed;
         for (int i = 2; i < n; i++)
         {
             Vector3 pos = spline.GetPosition(i);
