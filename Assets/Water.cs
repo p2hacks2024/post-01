@@ -52,9 +52,9 @@ public class Water : MonoBehaviour
     {
         Vector3 tilt = Input.acceleration;
         waveAmplitude=basewaveAmplitude;
-        BaseWave();
+        Wave1();
         if(tilt.x>=-0.2f&&tilt.x<=0.2f){
-            Wave1();
+            BaseWave();
         }
         
     }
@@ -87,8 +87,8 @@ public class Water : MonoBehaviour
 
     public void Wave1(){
         float time = Time.time * basewaveSpeed;
-        waveAmplitude=basewaveAmplitude*5.0f;
-        waveFrequency = basewaveFrequency;
+        waveAmplitude=basewaveAmplitude*3.0f;
+        waveFrequency = basewaveFrequency-0.5f;
         waveSpeed = basewaveSpeed;
         for (int i = 2; i < n; i++)
         {
@@ -101,7 +101,7 @@ public class Water : MonoBehaviour
         if (waveObject != null)
     {
         Vector3 waveObjPos = waveObject.position;
-        waveObjPos.y = GetWaveHeight(waveObject.position.x, time-1.0f)-0.25f; // 波の高さを取得
+        waveObjPos.y = GetWaveHeight(waveObject.position.x, time-0.25f)-0.25f; // 波の高さを取得
         waveObject.position = waveObjPos;
     }
     }
