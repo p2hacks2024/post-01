@@ -42,6 +42,7 @@ Temporary Items
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
+Library/
 ExportedObj/
 .consulo/
 *.csproj
