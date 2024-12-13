@@ -52,10 +52,24 @@ public class Water : MonoBehaviour
     {
         Vector3 tilt = Input.acceleration;
         waveAmplitude=basewaveAmplitude;
-        Wave1();
-        if(tilt.x>=-0.2f&&tilt.x<=0.2f){
-            BaseWave();
+        waveFrequency = basewaveFrequency-tilt.x;
+        waveSpeed = basewaveSpeed;
+        float time = Time.time * basewaveSpeed;
+
+        for (int i = 2; i < n; i++)
+        {
+            Vector3 pos = spline.GetPosition(i);
+            float x = basePointPos.x + interval * (i - 2);
+            pos.y = 0.5f* waveAmplitude * Mathf.Sin(waveFrequency * x + time)*0.25f; // sin波
+            spline.SetPosition(i, pos);
+            
         }
+        if (waveObject != null)
+    {
+        Vector3 waveObjPos = waveObject.position;
+        waveObjPos.y = GetWaveHeight(waveObject.position.x, time+1)-0.25f; // 波の高さを取得
+        waveObject.position = waveObjPos;
+    }
         
     }
     public float GetWaveHeight(float x, float time)
