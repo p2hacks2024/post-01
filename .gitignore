@@ -74,6 +74,14 @@ ExportedObj/
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
 
+# Unity auto-generated lighting data
+/[Aa]ssets/[Ll]ighting[Aa]ssets/
+
+# Exclude all AddressablesBuild* directories
+/[Bb]uilds/AddressablesBuilds/
+
+# Exclude Cache for Burst
+/[Ll]ibrary/BurstCache/
 # Recordings can get excessive in size
 /[Rr]ecordings/
 
