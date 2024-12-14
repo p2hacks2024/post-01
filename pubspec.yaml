@@ -30,7 +30,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_unity_widget: ^2022.1.0+7
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
@@ -62,10 +61,13 @@ flutter:
     - lib/image/icon_home.png
     - lib/image/icon_arrow.png
     - lib/image/icon_arrow2.png
+    - lib/image/icon_back.png
+    - lib/image/image3.png
   fonts:
-    - family: ZenKurenaido
-      fonts:
-        - asset: lib/font/ZenKurenaido-Regular.ttf
+      - family: ZenKurenaido
+        fonts:
+          - asset: lib/font/ZenKurenaido-Regular.ttf
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
