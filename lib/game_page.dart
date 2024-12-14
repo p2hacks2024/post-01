@@ -32,10 +32,10 @@ class _GameHomePageState extends State<GameHomePage> {
   // String displayText = "スタート";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+    return const Scaffold(
+      // appBar: AppBar(
+      //   title: Text(widget.title),
+      // ),
       body: const Center(
         child: Text(
           "ゲーム画面",
