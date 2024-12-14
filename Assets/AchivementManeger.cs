@@ -53,9 +53,11 @@ public class AchinementManeger : MonoBehaviour
             displayText.gameObject.SetActive(false);
             
         // 実績を読み込む
-        //LoadAchievements();
+        LoadAchievements();
         // 開発者確認用実績データリセット関数
-        ResetAchievements();
+        //ResetAchievements();
+        // ゲーム初回ログイン時実績１達成
+        UnlockAchievement("1");
         // カメラ移動時間を取得
         CameraMove cameraMoveScript = FindObjectOfType<CameraMove>();
         if (cameraMoveScript != null)
@@ -67,7 +69,7 @@ public class AchinementManeger : MonoBehaviour
             cameraMoveDuration = 0f; // デフォルト値
         }
         // ?番目の実績を解除
-        UnlockAchievement("3");
+        //UnlockAchievement("3");
     }
 
     // 実績を解除するメソッド
