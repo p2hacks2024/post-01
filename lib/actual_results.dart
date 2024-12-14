@@ -34,45 +34,59 @@ class _ActualResultsHomePageState extends State<ActualResultsHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
+
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(image:
+          AssetImage('lib/image/image.png'),)),
+      child:Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 50),
-          const Text("もくじ"),
-          Center(
-              child: Column(children: [
-            TextButton(
+
+          const SizedBox(height: 200),
+          const Padding(padding: EdgeInsets.only(left: 20),
+          child: Text("もくじ",style: TextStyle(fontSize: 25, fontFamily: 'ZenKurenaido'),),),
+
+            const SizedBox(height: 5),
+          Padding(padding: const EdgeInsets.only(left: 20),
+            child:TextButton(
               child: const Text(
-                "1.てんきあめ",
-              ),
+                "１.　てんきあめ",
+              style: TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'ZenKurenaido'),),
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const WeatherRainPage()));
               },
-            ),
-            TextButton(
-              child: const Text("2.なんとか"),
+            ),),
+          Padding(padding: const EdgeInsets.only(left: 20),
+            child: TextButton(
+              child: const Text("２.　なんとか",style: TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'ZenKurenaido'),),
               onPressed: () {},
-            ),
-            TextButton(
-              child: const Text("3.なんとか"),
+            ),),
+          Padding(padding: const EdgeInsets.only(left: 20),
+            child: TextButton( // 文字サイズ大きくしよう1.5倍
+              child: const Text("３.　なんとか",style: TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'ZenKurenaido'),),
               onPressed: () {},
-            ),
-            const SizedBox(height: 50),
-            Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.arrow_forward_ios_outlined)))
-          ]))
-        ],
+            ),),
+          const SizedBox(height: 240),
+          Row(
+              children: [
+                // Padding(padding: const EdgeInsets.only(left: 10),
+                //     child:IconButton(onPressed: (){}, icon: Image.asset("lib/image/icon_arrow2.png")),),
+                Padding(padding: const EdgeInsets.only(left: 260),
+                    child: IconButton(onPressed: (){}, icon: Image.asset("lib/image/icon_arrow.png"))
+                )
+              ]
+          ),
+
+       // Image.asset("lib/image/icon_home.png"),
+
+          ])
+       // ],
       ),
-      backgroundColor: Colors.grey,
+      //backgroundColor: Colors.grey,
     );
   }
 }

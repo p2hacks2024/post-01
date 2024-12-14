@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:with_you/actual_results.dart';
-
 import 'game_page.dart';
 
 void main() {
@@ -39,9 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      // appBar: AppBar(
+      //   title: Text(widget.title),
+      // ),
       body: Center(
         child: Column(
           children: [
