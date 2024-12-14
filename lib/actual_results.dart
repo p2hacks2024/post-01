@@ -30,7 +30,6 @@ class ActualResultsHomePage extends StatefulWidget {
 }
 
 class _ActualResultsHomePageState extends State<ActualResultsHomePage> {
-  // String displayText = "スタート";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,15 +43,15 @@ class _ActualResultsHomePageState extends State<ActualResultsHomePage> {
         children: [
 
           const SizedBox(height: 200),
-          const Padding(padding: EdgeInsets.only(left: 20),
-          child: Text("もくじ",style: TextStyle(fontSize: 25, fontFamily: 'ZenKurenaido'),),),
+          const Padding(padding: EdgeInsets.only(left: 30),
+          child: Text("もくじ",style: TextStyle(fontSize: 30, fontFamily: 'ZenKurenaido'),),),
 
             const SizedBox(height: 5),
           Padding(padding: const EdgeInsets.only(left: 20),
             child:TextButton(
               child: const Text(
                 "１.　てんきあめ",
-              style: TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'ZenKurenaido'),),
+              style: TextStyle(fontSize: 25, color: Colors.black, fontFamily: 'ZenKurenaido'),),
               onPressed: () {
                 Navigator.push(
                     context,
@@ -62,31 +61,24 @@ class _ActualResultsHomePageState extends State<ActualResultsHomePage> {
             ),),
           Padding(padding: const EdgeInsets.only(left: 20),
             child: TextButton(
-              child: const Text("２.　なんとか",style: TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'ZenKurenaido'),),
+              child: const Text("２.　なんとか",style: TextStyle(fontSize: 25, color: Colors.black, fontFamily: 'ZenKurenaido'),),
               onPressed: () {},
             ),),
           Padding(padding: const EdgeInsets.only(left: 20),
             child: TextButton( // 文字サイズ大きくしよう1.5倍
-              child: const Text("３.　なんとか",style: TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'ZenKurenaido'),),
+              child: const Text("３.　一富士二鷹三茄子",style: TextStyle(fontSize: 25, color: Colors.black, fontFamily: 'ZenKurenaido'),),
               onPressed: () {},
             ),),
-          const SizedBox(height: 240),
+          const SizedBox(height: 220),
           Row(
               children: [
-                // Padding(padding: const EdgeInsets.only(left: 10),
-                //     child:IconButton(onPressed: (){}, icon: Image.asset("lib/image/icon_arrow2.png")),),
                 Padding(padding: const EdgeInsets.only(left: 260),
                     child: IconButton(onPressed: (){}, icon: Image.asset("lib/image/icon_arrow.png"))
                 )
               ]
           ),
-
-       // Image.asset("lib/image/icon_home.png"),
-
           ])
-       // ],
       ),
-      //backgroundColor: Colors.grey,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:with_you/actual_results.dart';
 
 class WeatherRainPage extends StatelessWidget {
   const WeatherRainPage({super.key});
@@ -29,32 +30,50 @@ class WeatherRainHomePage extends StatefulWidget {
 }
 
 class _WeatherRainHomePageState extends State<WeatherRainHomePage> {
-  // String displayText = "スタート";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(widget.title), actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.arrow_back_ios_new_outlined),
-        )
-      ]),
-      body: const Column(
+    return  Scaffold(
+        body: Container(
+        decoration:  const BoxDecoration(
+        image: DecorationImage(image:
+        AssetImage('lib/image/image.png'),)),
+      child:   Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 50),
-          Text("1.てんきあめ"),
-          Center(
+          const SizedBox(height: 75),
+          IconButton(onPressed: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ActualResultsPage()));
+          }, icon:
+          Image.asset('lib/image/icon_back.png'),),
+          const SizedBox(height: 50),
+          const Padding(padding: EdgeInsets.only(left: 30),
+          child: Text(
+            "１.　てんきあめ",
+            style: TextStyle(fontSize: 25, color: Colors.black, fontFamily: 'ZenKurenaido'),)),
+          const Center(
               child: Column(children: [
-            Text("説明"),
-          ]))
+           // 画像が入る予定
+          ])),
+          const SizedBox(height: 290),
+          const Text('''
+          晴れているときに
+          上から下にスワイプして
+          雨を降らせる''',style: TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'ZenKurenaido')),
+          const SizedBox(height: 20),
+          Row(
+              children: [
+                Padding(padding: const EdgeInsets.only(left: 10),
+                    child:IconButton(onPressed: (){}, icon: Image.asset("lib/image/icon_arrow2.png")),),
+                Padding(padding: const EdgeInsets.only(left: 180),
+                    child: IconButton(onPressed: (){}, icon: Image.asset("lib/image/icon_arrow.png"))
+                )
+              ]
+          ),
         ],
-      ),
-      backgroundColor: Colors.grey,
+      ),)
     );
-    // body: IconButton(
-    //   onPressed: () {},
-    //   icon: const Icon(Icons.arrow_back_ios_new_outlined),
-    // ));
   }
 }

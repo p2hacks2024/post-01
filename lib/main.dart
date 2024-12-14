@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:with_you/actual_results.dart';
-import 'game_page.dart';
+import 'package:with_you/test/test_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,75 +33,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String displayText = "スタート";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(widget.title),
-      // ),
-      body: Center(
-        child: Column(
-          children: [
-            const Text(
-              "タイトル画面",
-              style: TextStyle(fontSize: 30),
-            ),
-            GestureDetector(
-              onTap: () {
-                // タップされたときにテキストを変更
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const GamePage()));
-              },
-              child: Text(
-                displayText,
-                style: const TextStyle(fontSize: 18),
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ActualResultsPage()));
-              },
-              icon: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Container(
-                  color: Colors.blue,
-                  width: 40,
-                  height: 40,
-                ),
-              )),
-          const SizedBox(width: 30),
-          IconButton(
-              onPressed: () {},
-              icon: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Container(
-                  color: Colors.blue,
-                  width: 40,
-                  height: 40,
-                ),
-              )),
-          const SizedBox(width: 30),
-          IconButton(
-              onPressed: () {},
-              icon: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Container(
-                  color: Colors.blue,
-                  width: 40,
-                  height: 40,
-                ),
-              )),
-        ]),
-      ),
-    );
+        body: ElevatedButton(onPressed: (){
+          // 下にスワイプする処理を書く
+          Navigator.of(context).push(
+            PageRouteBuilder(pageBuilder: (context,animation,secondaryAnimation) {
+              return const TestPage(); // テスト画面を表示しているのでここをunityの画面にしたい
+            },
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              const Offset begin =  Offset(0.0, -1.0);
+              const Offset end = Offset.zero;
+              final Animatable<Offset> tween = Tween(begin: begin, end: end)
+              .chain(CurveTween(curve: Curves.easeInOut));
+              final Animation<Offset> offsetAnimation = animation.drive(tween);
+              return SlideTransition(position: offsetAnimation, child: child,);
+            })
+          );
+        }, child: Container(
+        decoration: const BoxDecoration(
+        image: DecorationImage(image:
+        AssetImage('lib/image/image3.png'),)),
+        ))
+     );
   }
 }
+
