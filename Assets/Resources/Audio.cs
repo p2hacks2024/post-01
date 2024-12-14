@@ -5,7 +5,8 @@ using UnityEngine.Audio;
 public class Audio : MonoBehaviour
 {
     //Audioミキサーを入れるとこです
-    [SerializeField] AudioMixer audioMixer;
+    [SerializeField] AudioMixer audioMixer1;
+    [SerializeField] AudioMixer audioMixer2;
 
     //それぞれのスライダーを入れるとこです。。
     [SerializeField] Slider BGMSlider;
@@ -16,20 +17,20 @@ public class Audio : MonoBehaviour
         //ミキサーのvolumeにスライダーのvolumeを入れてます。
 
         //BGM
-        audioMixer.GetFloat("BGM", out float bgmVolume);
+        audioMixer1.GetFloat("BGM", out float bgmVolume);
         BGMSlider.value = bgmVolume;
         //SE
-        audioMixer.GetFloat("SE", out float seVolume);
+        audioMixer2.GetFloat("SE", out float seVolume);
         SESlider.value = seVolume;
     }
 
     public void SetBGM(float volume)
     {
-        audioMixer.SetFloat("BGM", volume);
+        audioMixer1.SetFloat("BGM", volume);
     }
 
     public void SetSE(float volume)
     {
-        audioMixer.SetFloat("SE", volume);
+        audioMixer2.SetFloat("SE", volume);
     }
 }
