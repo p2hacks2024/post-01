@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro; 
+using System;
 
 public class AchinementManeger : MonoBehaviour
 {
@@ -44,8 +45,16 @@ public class AchinementManeger : MonoBehaviour
     public float dropSpeed = 4f;       // 降りてくる速度
     private float cameraMoveDuration; // カメラ移動時間
 
+    private const string LoginCountKey = "LoginCount";//ログイン回数を保持するキー
+
     void Start()
     {
+        // 現在時刻を取得
+        DateTime now = DateTime.Now;
+        int year = now.Year;
+        int month = now.Month;
+        int day = now.Day;
+        
         //再ログインした際　実績を表示する枠が残らないようにするための処理
         if (backgroundImage != null)
             backgroundImage.SetActive(false);
@@ -57,7 +66,8 @@ public class AchinementManeger : MonoBehaviour
         // 開発者確認用実績データリセット関数
         //ResetAchievements();
         // ゲーム初回ログイン時実績１達成
-        UnlockAchievement("1");
+        Debug.Log("実績解除: はじめのいっぽ");
+        //UnlockAchievement("1");
         // カメラ移動時間を取得
         CameraMove cameraMoveScript = FindObjectOfType<CameraMove>();
         if (cameraMoveScript != null)
@@ -68,6 +78,24 @@ public class AchinementManeger : MonoBehaviour
         {
             cameraMoveDuration = 0f; // デフォルト値
         }
+         // 条件: 3時～6時の間にログインした場合
+        if (now.Hour >= 3 && now.Hour < 6)
+        {
+            Debug.Log("実績解除: 早起き！");
+            UnlockAchievement("3"); // 実績解除メソッドを呼び出し
+        }
+        // 条件: 23時～3時の間にログインした場合
+        else if(now.Hour < 3 && now.Hour >= 23)
+        {
+            Debug.Log("実績解除: 夜更かし");
+            UnlockAchievement("4"); //実績解除メソッドを呼び出し
+        }
+        // 2024/12/15 p2hackの日にログインした場合
+        if(year==2024&&month==12&&day==15){
+            Debug.Log("実績解除: P2hack");
+            UnlockAchievement("16");//実績解除メソッドを呼び出し
+        }
+
         // ?番目の実績を解除
         //UnlockAchievement("3");
     }
@@ -174,4 +202,5 @@ public class AchinementManeger : MonoBehaviour
         ScreenCapture.CaptureScreenshot(screenshotPath);
         Debug.Log($"Screenshot taken for achievement: {achievement.title} at {screenshotPath}");
     }
+    
 }
